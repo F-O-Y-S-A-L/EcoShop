@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-eco-primary: #FF5C00; /* Vibrant Snack Orange */
+  --color-eco-secondary: #FFD2A0;
+  --color-eco-bg: #FDFCFB;
+  --color-eco-accent: #FFF5EC;
+  --color-eco-cream: #FFFFFF;
+  --color-eco-dark: #1A120B; /* Deep Chocolate/Coffee Black */
+  --color-eco-gray: #F8F7F4;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+}
+
+@layer base {
+  html, body {
+    background-color: var(--color-eco-bg);
+    color: var(--color-eco-dark);
+    @apply font-sans outline-none antialiased;
+  }
+}
+
+@layer components {
+  h1, h2, h3, .font-display {
+    @apply font-display font-extrabold tracking-tight;
+  }
+
+  .sleek-card {
+    @apply bg-white border border-eco-gray rounded-4xl p-4 transition-all hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .sleek-input {
+    @apply bg-eco-gray border border-transparent rounded-2xl py-3 px-5 transition-all focus:ring-2 focus:ring-eco-primary/20 focus:border-eco-primary outline-none;
+  }
+
+  .sleek-button-primary {
+    @apply bg-eco-dark text-white rounded-full px-8 py-4 text-sm font-bold tracking-tight transition-all hover:bg-eco-primary hover:shadow-lg active:scale-95;
+  }
+
+  .sleek-label {
+    @apply text-xs uppercase tracking-widest font-bold text-gray-400;
+  }
+}
