@@ -66,5 +66,5 @@ async session({ session, token }) {
   pages: {
     signIn: "/login"
   },
-  secret: process.env.AUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET
 });
