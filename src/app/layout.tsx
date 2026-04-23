@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "An eco-friendly e-commerce platform focusing on sustainable products.",
   icons: {
-    icon: "/ecoshop-swart.svg",
+    icon: "/beverage-cafe-coffee-svgrepo-com.svg",
   },
   openGraph: {
     title: "EcoShop swart - Sustainable Marketplace",
