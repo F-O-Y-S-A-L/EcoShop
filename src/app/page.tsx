@@ -1,26 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Coffee, Cookie, IceCream, Pizza, ArrowRight, ShieldCheck, Globe, Truck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Globe, Truck } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
-  const [featuredProducts, setFeaturedProducts] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setFeaturedProducts(data.slice(0, 4));
-        } else {
-          setFeaturedProducts([]);
-        }
-      })
-      .catch(() => setFeaturedProducts([]));
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto px-2 py-8 md:px-4 md:py-12 space-y-24">
       {/* Dynamic Hero Section */}
@@ -29,7 +13,7 @@ export default function Home() {
            <img 
             src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=2000" 
             alt="Premium Snacks and Cold Beverages" 
-            className="w-full h-full object-cover brightness-[0.4] transition-transform duration-[2s] hover:scale-105"
+            className="w-full h-full object-cover brightness-[0.4] transition-transform duration-[2s] hover:scale-105"  
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-linear-to-r from-eco-dark/80 to-transparent"></div>
@@ -120,60 +104,6 @@ export default function Home() {
             </div>
           </div>
           <div className="w-32 h-32 bg-eco-secondary/20 rounded-full items-center justify-center text-5xl">🎁</div>
-        </div>
-      </section>
-
-      {/* Trending Header */}
-      <section className="space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <span className="text-eco-primary font-black uppercase tracking-[0.3em] text-[10px]">What's Hot</span>
-            <h2 className="text-5xl font-display leading-tight italic">Trending Hits</h2>
-          </div>
-          <Link href="/shop" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-eco-dark hover:text-eco-primary transition-all">
-            Browse Everything
-            <div className="w-10 h-10 border border-eco-dark/10 rounded-full flex items-center justify-center group-hover:bg-eco-dark group-hover:text-white transition-all">
-              <ArrowRight className="h-4 w-4" />
-            </div>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {featuredProducts.map((product: any, i) => (
-            <motion.div 
-              key={product._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="group"
-            >
-              <Link href={`/product/${product._id}`}>
-                <div className="bg-white p-3 rounded-[2.5rem] border border-eco-gray transition-all group-hover:shadow-[0_20px_50px_-20px_rgba(255,92,0,0.15)] group-hover:-translate-y-2">
-                  <div className="aspect-square bg-eco-gray rounded-4xl overflow-hidden relative">
-                    <img 
-                      src={product.images[0]} 
-                      alt={product.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
-                        ৳{product.price.toFixed(2)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-4 space-y-2">
-                    <h4 className="font-bold text-sm truncate uppercase tracking-tight">{product.name}</h4>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{product.category}</span>
-                      <div className="flex gap-0.5">
-                        {[1,2,3,4,5].map(s => <div key={s} className={`w-1 h-1 rounded-full ${s <= product.averageRating ? 'bg-eco-primary' : 'bg-gray-200'}`} />)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
         </div>
       </section>
 

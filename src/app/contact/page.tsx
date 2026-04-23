@@ -9,15 +9,30 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      toast.success('Message received by the ecosystem. We will reach out.');
-      setForm({ name: '', email: '', message: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success(data.simulated ? 'Mission Logged (Local). Connect SMTP for real emails.' : 'Message received by the ecosystem.');
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        toast.error(data.error || 'Connection failed.');
+      }
+    } catch (error) {
+      toast.error('Sector interference. Please try again.');
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -74,7 +89,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="p-4 md:p-8 bg-eco-dark rounded-2xl md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
+          <div className="p-8 bg-eco-dark rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
              <div className="absolute top-0 right-0 w-32 h-32 bg-eco-primary/20 blur-[50px] rounded-full"></div>
              <h4 className="text-xl font-display font-bold italic mb-4">Turbo Response</h4>
              <p className="text-sm text-white/50 leading-relaxed uppercase tracking-tight">
@@ -88,7 +103,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           onSubmit={handleSubmit}
-          className="bg-white p-5 rounded-3xl md:p-16 md:rounded-[4rem] border border-eco-gray shadow-2xl space-y-10"
+          className="bg-white p-10 md:p-16 rounded-[4rem] border border-eco-gray shadow-2xl space-y-10"
         >
           <div className="space-y-8">
             <div className="space-y-3">
