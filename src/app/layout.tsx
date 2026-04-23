@@ -6,7 +6,8 @@ import Footer from "@/src/components/Footer";
 
 export const metadata: Metadata = {
   title: "EcoShop - Sustainable Marketplace",
-  description: "An eco-friendly e-commerce platform focusing on sustainable products.",
+  description:
+    "An eco-friendly e-commerce platform focusing on sustainable products.",
 };
 
 export default function RootLayout({
@@ -19,9 +20,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <Providers>
           <Navbar />
-          <main className="grow">
-            {children}
-          </main>
+          <main className="grow">{children}</main>
           <Footer />
         </Providers>
       </body>

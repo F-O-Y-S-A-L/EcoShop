@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { User, Lock, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
-import { useAuth } from '@/src/contexts/AuthContext';
-import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { User, Lock, Mail, ArrowRight, ShieldCheck } from "lucide-react";
+import { useAuth } from "@/src/contexts/AuthContext";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { register } = useAuth();
@@ -18,10 +18,10 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       await register(form.name, form.email, form.password);
-      toast.success('Account created! Welcome to the circular economy.');
-      router.push('/profile');
+      toast.success("Account created! Welcome to the circular economy.");
+      router.push("/profile");
     } catch (err) {
-      toast.error('Registration failed. Email might be in use.');
+      toast.error("Registration failed. Email might be in use.");
     } finally {
       setLoading(false);
     }
@@ -29,22 +29,28 @@ export default function RegisterPage() {
 
   return (
     <div className="max-w-md mx-auto px-4 py-20">
-       <div className="bg-white p-10 rounded-[3rem] border border-eco-bg shadow-xl space-y-10">
+      <div className="bg-white p-10 rounded-[3rem] border border-eco-bg shadow-xl space-y-10">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-display font-bold italic">Join the Movement</h1>
-          <p className="text-gray-400 text-sm italic">Start your conscious consumption today.</p>
+          <h1 className="text-4xl font-display font-bold italic">
+            Join the Movement
+          </h1>
+          <p className="text-gray-400 text-sm italic">
+            Start your conscious consumption today.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">Your Identity</label>
+            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">
+              Your Identity
+            </label>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 required
                 value={form.name}
-                onChange={e => setForm({...form, name: e.target.value})}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full bg-eco-gray p-4 pl-12 rounded-2xl outline-none focus:ring-2 ring-eco-primary/20 transition-all border border-transparent focus:border-eco-primary"
                 placeholder="John Eco"
               />
@@ -52,14 +58,16 @@ export default function RegisterPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">Email Essence</label>
+            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">
+              Email Essence
+            </label>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
-              <input 
-                type="email" 
+              <input
+                type="email"
                 required
                 value={form.email}
-                onChange={e => setForm({...form, email: e.target.value})}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full bg-eco-gray p-4 pl-12 rounded-2xl outline-none focus:ring-2 ring-eco-primary/20 transition-all border border-transparent focus:border-eco-primary"
                 placeholder="nature@ecosystem.com"
               />
@@ -67,27 +75,32 @@ export default function RegisterPage() {
           </div>
 
           <div className="space-y-2">
-             <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">Secure Key</label>
-             <div className="relative">
-               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
-               <input 
-                 type="password" 
-                 required
-                 value={form.password}
-                 onChange={e => setForm({...form, password: e.target.value})}
-                 className="w-full bg-eco-gray p-4 pl-12 rounded-2xl outline-none focus:ring-2 ring-eco-primary/20 transition-all border border-transparent focus:border-eco-primary"
-                 placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
-               />
-             </div>
+            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mx-1">
+              Secure Key
+            </label>
+            <div className="relative">
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
+              <input
+                type="password"
+                required
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                className="w-full bg-eco-gray p-4 pl-12 rounded-2xl outline-none focus:ring-2 ring-eco-primary/20 transition-all border border-transparent focus:border-eco-primary"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+              />
+            </div>
           </div>
 
           <div className="bg-eco-accent/50 p-4 rounded-2xl flex items-start gap-3">
-             <ShieldCheck className="h-4 w-4 text-eco-primary shrink-0 mt-0.5" />
-             <p className="text-[9px] text-eco-dark font-medium leading-relaxed">By creating an account, you agree to our Sustainable Commerce Terms and Circular Privacy Policy.</p>
+            <ShieldCheck className="h-4 w-4 text-eco-primary shrink-0 mt-0.5" />
+            <p className="text-[9px] text-eco-dark font-medium leading-relaxed">
+              By creating an account, you agree to our Sustainable Commerce
+              Terms and Circular Privacy Policy.
+            </p>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
             className="w-full bg-eco-dark text-white py-5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2 group"
           >
@@ -103,7 +116,13 @@ export default function RegisterPage() {
         </form>
 
         <p className="text-center text-xs text-gray-400">
-          Member already? <Link href="/login" className="text-eco-primary font-bold hover:underline">Sign In Instead</Link>
+          Member already?{" "}
+          <Link
+            href="/login"
+            className="text-eco-primary font-bold hover:underline"
+          >
+            Sign In Instead
+          </Link>
         </p>
       </div>
     </div>
