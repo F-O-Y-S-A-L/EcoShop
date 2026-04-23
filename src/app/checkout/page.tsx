@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { CreditCard, Truck, CheckCircle2, ChevronRight, Wallet, ShieldCheck } from 'lucide-react';
@@ -19,10 +19,11 @@ export default function CheckoutPage() {
   });
   const [isProcessing, setIsProcessing] = useState(false);
 
-  if (items.length === 0 && step !== 3) {
-    router.push('/shop');
-    return null;
-  }
+  useEffect(() => {
+    if (items.length === 0 && step !== 3) {
+      router.push('/shop');
+    }
+  }, [items, step, router]);
 
   const handleOrder = async () => {
     if (!user) return toast.error('Login required');
