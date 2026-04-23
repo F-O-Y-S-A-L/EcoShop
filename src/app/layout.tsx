@@ -5,9 +5,36 @@ import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
 
 export const metadata: Metadata = {
-  title: "EcoShop - Sustainable Marketplace",
+  title: "EcoShop swart - Sustainable Marketplace",
   description:
     "An eco-friendly e-commerce platform focusing on sustainable products.",
+  icons: {
+    icon: "/ecoshop-swart.svg",
+  },
+  openGraph: {
+    title: "EcoShop swart - Sustainable Marketplace",
+    description:
+      "Discover sustainable, eco-friendly products on EcoShop. Shop responsibly and reduce your carbon footprint.",
+    url: "https://ecoshop-swart.vercel.app/",
+    siteName: "EcoShop swart",
+    images: [
+      {
+        url: "/or-ecoshop.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "EcoShop swart Preview Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EcoShop swart - Sustainable Marketplace",
+    description:
+      "EcoShop swart is your destination for eco-friendly, sustainable products.",
+    images: ["or-ecoshop.jpg"],
+  }
 };
 
 export default function RootLayout({
