@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "EcoShop swart",
     images: [
       {
-        url: "/or-ecoshop.jpg", 
+        url: "/or-ecoshop.jpeg", 
         width: 1200,
         height: 630, 
         alt: "EcoShop swart Preview Image",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "EcoShop swart - Sustainable Marketplace",
     description:
       "EcoShop swart is your destination for eco-friendly, sustainable products.",
-    images: ["or-ecoshop.jpg"],
+    images: ["or-ecoshop.jpeg"],
   }
 };
 
@@ -44,9 +44,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="hK7kSE69Kolk3Lbl9py2FeehlsEIUkeWT4kO1MdDKqY" />
-      </head>
       <body className="min-h-screen flex flex-col">
         <Providers>
           <Navbar />
