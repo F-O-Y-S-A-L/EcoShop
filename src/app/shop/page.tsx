@@ -288,7 +288,7 @@ function ShopContent() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
               {Array.isArray(products) &&
                 products.map((product: any) => (
                   <motion.div
@@ -302,7 +302,7 @@ function ShopContent() {
                       href={`/product/${product._id}`}
                       className="block relative"
                     >
-                      <div className="bg-white border border-eco-bg p-2.5 rounded-[3rem] mb-6 relative overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500">
+                      <div className="bg-white border border-eco-bg md:p-2.5 rounded-2xl md:rounded-[3rem] mb-6 relative overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500">
                         <div className="aspect-4/5 bg-eco-gray rounded-[2.5rem] flex items-center justify-center overflow-hidden">
                           <img
                             src={product.images[0]}
@@ -313,17 +313,17 @@ function ShopContent() {
                         </div>
 
                         {/* Price Tag Overlay */}
-                        <div className="absolute bottom-6 right-6 bg-white text-eco-dark px-4 py-2 rounded-2xl font-black text-xs shadow-xl border border-eco-bg">
+                        <div className="absolute bottom-2 right-2 md:bottom-6 md:right-6 bg-white text-eco-dark px-4 py-2 rounded-2xl font-black text-xs shadow-xl border border-eco-bg">
                           ৳{product.price.toFixed(2)}
                         </div>
 
-                        <div className="absolute top-8 left-8 bg-black/40 backdrop-blur-md text-white text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-[0.2em]">
+                        <div className="absolute top-4 left-2 md:top-8 md:left-8 bg-black/40 backdrop-blur-md text-white text-[6px] font-black px-1 md:px-3 py-1 rounded-full uppercase tracking-[0.2em]">
                           Verified
                         </div>
 
                         <button
                           onClick={(e) => handleWishlist(e, product._id)}
-                          className={`absolute top-8 right-8 w-10 h-10 rounded-full backdrop-blur-md transition-all flex items-center justify-center shadow-lg ${user?.wishlist?.includes(product._id) ? "bg-red-500 text-white" : "bg-white/90 text-gray-500 hover:bg-eco-primary hover:text-white"}`}
+                          className={`absolute top-2 right-2 md:top-8 md:right-8 w-10 h-10 rounded-full backdrop-blur-md transition-all flex items-center justify-center shadow-lg ${user?.wishlist?.includes(product._id) ? "bg-red-500 text-white" : "bg-white/90 text-gray-500 hover:bg-eco-primary hover:text-white"}`}
                         >
                           <Heart
                             size={18}

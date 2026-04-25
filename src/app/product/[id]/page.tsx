@@ -121,7 +121,7 @@ export default function ProductDetail({
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <div className="aspect-4/5 rounded-[3rem] overflow-hidden bg-eco-gray border border-eco-bg p-8 flex items-center justify-center">
+          <div className="aspect-4/5 rounded-[3rem] overflow-hidden bg-eco-gray border border-eco-bg md:p-8 flex items-center justify-center">
             <img
               src={product.images?.[0]}
               alt={product.name}

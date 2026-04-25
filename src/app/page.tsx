@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-2 py-8 md:px-4 md:py-12 space-y-24">
       {/* Dynamic Hero Section */}
-      <section className="relative h-150 md:h-175 rounded-[3.5rem] overflow-hidden flex items-center">
+      <section className="relative h-150 md:h-175 rounded-3xl md:rounded-[3.5rem] overflow-hidden flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=2000"
@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* Feature Bento Grid */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 bg-eco-primary p-12 rounded-[3.5rem] flex flex-col justify-between text-white relative overflow-hidden group">
+        <div className="md:col-span-2 bg-eco-primary p-8 md:p-12 rounded-2xl md:rounded-[3.5rem] flex flex-col justify-between text-white relative overflow-hidden group">
           <Globe className="absolute -right-10 -bottom-10 h-64 w-64 opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-700" />
           <div className="space-y-4 relative z-10">
             <h3 className="text-4xl font-display font-extrabold leading-none">
@@ -89,7 +89,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-eco-dark p-12 rounded-[3.5rem] text-white flex flex-col justify-between space-y-8">
+        <div className="bg-eco-dark p-8 md:p-12 rounded-2xl md:rounded-[3.5rem] text-white flex flex-col justify-between space-y-8">
           <div className="bg-white/10 w-fit p-4 rounded-3xl backdrop-blur-md">
             <Truck className="h-8 w-8 text-eco-primary" />
           </div>
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-eco-accent p-12 rounded-[3.5rem] flex flex-col justify-between border border-eco-secondary/30">
+        <div className="bg-eco-accent p-8 md:p-12 rounded-2xl md:rounded-[3.5rem] flex flex-col justify-between border border-eco-secondary/30">
           <div className="bg-white/80 w-fit p-4 rounded-3xl shadow-sm">
             <ShieldCheck className="h-8 w-8 text-eco-primary" />
           </div>
@@ -141,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-eco-dark rounded-[4rem] p-20 text-center space-y-8 relative overflow-hidden">
+      <section className="bg-eco-dark p-8 md:p-12 rounded-2xl md:rounded-[3.5rem] text-center space-y-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-eco-primary/20 blur-[100px] rounded-full"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-eco-secondary/10 blur-[100px] rounded-full"></div>
 
