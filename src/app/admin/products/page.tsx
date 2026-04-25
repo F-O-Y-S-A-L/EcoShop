@@ -231,9 +231,13 @@ export default function CreateProductPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="sleek-label">Price ($)</label>
+                  <label className="sleek-label">
+                    Price (<span className="text-sm font-bold">৳</span>)
+                  </label>
                   <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
+                    <span className="absolute left-4 top-1/3 -translate-y-1/2 h-4 w-4 text-eco-primary text-2xl">
+                      ৳
+                    </span>
                     <input
                       type="number"
                       step="0.01"
@@ -297,6 +301,20 @@ export default function CreateProductPage() {
                     }
                     className="bg-eco-gray border-none rounded-2xl py-4 pl-12 pr-6 text-xs font-medium focus:ring-1 focus:ring-eco-primary outline-none w-full"
                     placeholder="https://..."
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="sleek-label">Tags (Comma separated)</label>
+                <div className="relative">
+                  <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
+                  <input
+                    type="text"
+                    value={form.tags}
+                    onChange={(e) => setForm({ ...form, tags: e.target.value })}
+                    className="bg-eco-gray border-none rounded-2xl py-4 pl-12 pr-6 text-xs font-medium focus:ring-1 focus:ring-eco-primary outline-none w-full"
+                    placeholder="truffle, potato, gourmet"
                   />
                 </div>
               </div>
