@@ -5,6 +5,7 @@ import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ecoshop-swart.vercel.app'),
   title: "EcoShop swart - Sustainable Marketplace",
   description:
     "An eco-friendly e-commerce platform focusing on sustainable products.",
