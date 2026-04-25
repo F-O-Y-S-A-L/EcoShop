@@ -41,6 +41,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        await dbConnect();
+        let dbUser = await User.findOne({ email: user.email });
+
+        if (!dbUser) {
+          dbUser = new User({
+            name: user.name,
+            email: user.email,
+            images: user.image,
+            role: "user",
+            wishlist: [],
+            googleId: account.providerAccountId,
+          });
+          await dbUser.save();
+        }
+
+        user.id = dbUser._id.toString();
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -48,7 +69,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.wishlist = (user as any).wishlist || [];
       } else {
         const dbUser = await User.findById(token.id);
-        token.wishlist = dbUser?.wishlist?.map((id) => id.toString()) || [];
+        if (dbUser) {
+          token.id = dbUser._id.toString();
+          token.role = dbUser.role;
+          token.wishlist = dbUser.wishlist?.map((id) => id.toString()) || [];
+        }
       }
       return token;
     },
