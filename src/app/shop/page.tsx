@@ -296,14 +296,14 @@ function ShopContent() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     key={product._id}
-                    className="group flex flex-col"
+                    className="group flex flex-col my-4 md:my-0"
                   >
                     <Link
                       href={`/product/${product._id}`}
                       className="block relative"
                     >
-                      <div className="bg-white border border-eco-bg md:p-2.5 rounded-2xl md:rounded-[3rem] mb-6 relative overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500">
-                        <div className="aspect-4/5 bg-eco-gray rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                      <div className="bg-white border border-eco-bg md:p-4 rounded-2xl md:rounded-[3rem] mb-6 relative overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500">
+                        <div className="aspect-4/5 bg-eco-gray rounded-2xl md:rounded-[2.5rem] flex items-center justify-center overflow-hidden">
                           <img
                             src={product.images[0]}
                             alt={product.name}
@@ -332,7 +332,7 @@ function ShopContent() {
                         </button>
                       </div>
 
-                      <div className="px-4 space-y-4">
+                      <div className="md:px-4 space-y-1 md:space-y-4">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2 text-eco-primary">
                             <span className="text-[8px] font-black uppercase tracking-[0.2em]">
@@ -365,10 +365,10 @@ function ShopContent() {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-6 px-4">
+                      <div className="mt-2.5 md:mt-6">
                         <button
                           onClick={(e) => handleAddToCart(e, product)}
-                          className="w-full bg-eco-dark text-white py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-eco-primary transition-all shadow-lg active:scale-95"
+                          className="w-full bg-eco-dark text-white py-2 rounded-xl md:py-4 md:rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-eco-primary transition-all shadow-lg active:scale-95"
                         >
                           Add to cart
                         </button>
@@ -390,7 +390,7 @@ function ShopContent() {
                       onClick={() =>
                         handleUpdateParams("page", pageNumber.toString())
                       }
-                      className={`w-12 h-12 rounded-full text-[10px] font-black transition-all flex items-center justify-center ${
+                      className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full text-[10px] font-black transition-all flex items-center justify-center ${
                         page === pageNumber
                           ? "bg-eco-primary text-white shadow-lg scale-110"
                           : "text-eco-dark/40 hover:text-eco-dark"
@@ -407,7 +407,7 @@ function ShopContent() {
                   onClick={() =>
                     handleUpdateParams("page", (page + 1).toString())
                   }
-                  className="w-14 h-14 bg-eco-dark text-white rounded-full flex items-center justify-center hover:bg-eco-primary transition-all shadow-xl hover:translate-x-1"
+                  className="w-10 h-10 md:w-14 md:h-14 bg-eco-dark text-white rounded-full flex items-center justify-center hover:bg-eco-primary transition-all shadow-xl hover:translate-x-1"
                 >
                   <ArrowRight size={20} />
                 </button>
