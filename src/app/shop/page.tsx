@@ -250,7 +250,7 @@ function ShopContent() {
         </div>
       </div>
 
-      <div className="flex gap-16 relative">
+      <div className="flex flex-col sm:flex-row gap-16 relative">
         {/* Desktop Sidebar */}
         <aside className="hidden lg:block w-72 shrink-0 h-fit sticky top-24">
           <FiltersContent />
@@ -365,16 +365,15 @@ function ShopContent() {
                           </div>
                         </div>
                       </div>
+                      <div className="mt-6 px-4">
+                        <button
+                          onClick={(e) => handleAddToCart(e, product)}
+                          className="w-full bg-eco-dark text-white py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-eco-primary transition-all shadow-lg active:scale-95"
+                        >
+                          Add to cart
+                        </button>
+                      </div>
                     </Link>
-
-                    <div className="mt-6 px-4">
-                      <button
-                        onClick={(e) => handleAddToCart(e, product)}
-                        className="w-full bg-eco-dark text-white py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-eco-primary transition-all shadow-lg active:scale-95"
-                      >
-                        Add to cart
-                      </button>
-                    </div>
                   </motion.div>
                 ))}
             </div>
