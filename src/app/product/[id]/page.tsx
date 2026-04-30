@@ -61,7 +61,7 @@ export default function ProductDetail({
 
   const handleReviewSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!session.user) return toast.error("Login to review");
+    if (!session || !session?.user) return toast.error("Login to review");
     const res = await fetch("/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

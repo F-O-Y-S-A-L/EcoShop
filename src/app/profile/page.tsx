@@ -31,7 +31,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (session?.user?.wishlist && Array.isArray(productsData)) {
-      const wishlistIds = session.user.wishlist.map((id) => id.toString());
+      const wishlistIds = session?.user?.wishlist.map((id) => id.toString());
       const filtered = productsData.filter((p) =>
         wishlistIds.includes(p._id.toString()),
       );
@@ -111,7 +111,7 @@ export default function ProfilePage() {
           </div>
           <div className="space-y-1">
             <h1 className="text-5xl font-display font-bold italic leading-tight">
-              {session?.user.name}
+              {session?.user?.name}
             </h1>
             <p className="text-sm font-bold uppercase tracking-widest text-eco-primary/60">
               Verified Eco-Citizen
@@ -119,7 +119,7 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="flex gap-4">
-          {session?.user.role === "admin" && (
+          {session?.user?.role === "admin" && (
             <Link
               href="/admin/products"
               className="flex items-center gap-2 bg-eco-dark text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-all shadow-lg"
