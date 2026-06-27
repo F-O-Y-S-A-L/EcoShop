@@ -20,14 +20,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       async authorize(
         credentials: Partial<Record<"email" | "password", string>>,
       ) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Invalid email or password");
+        }
 
         await dbConnect();
         const user = await User.findOne({ email: credentials.email });
-        if (!user || !user.password) return null;
+
+        if (!user || !user.password) {
+          throw new Error("Invalid email or password");
+        }
 
         const isMatch = await user.comparePassword(credentials.password);
-        if (!isMatch) return null;
+
+        if (!isMatch) {
+          throw new Error("Invalid email or password");
+        }
 
         return {
           id: user._id.toString(),

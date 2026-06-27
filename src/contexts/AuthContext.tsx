@@ -45,14 +45,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [session]);
 
-  const login = async (email: string, password: string) => {
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-    if (result?.error) throw new Error(result.error);
-  };
+const login = async (email: string, password: string) => {
+  const result = await signIn("credentials", {
+    email,
+    password,
+    redirect: false,
+  })
+
+  if (result?.error) {
+    throw new Error("Invalid email or password")
+  }
+}
 
   const googleLogin = async () => {
     await signIn("google", { callbackUrl: "/profile" });
