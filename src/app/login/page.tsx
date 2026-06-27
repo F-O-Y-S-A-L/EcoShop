@@ -85,6 +85,7 @@ export default function LoginPage() {
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
               <input
+                name="email"
                 type="email"
                 required
                 autoComplete="username"
@@ -104,6 +105,7 @@ export default function LoginPage() {
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-eco-primary" />
               <input
                 type={showPassword ? "text" : "password"}
+                name="password"
                 required
                 autoComplete="current-password"
                 value={form.password}
