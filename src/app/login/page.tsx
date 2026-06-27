@@ -21,16 +21,41 @@ export default function LoginPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const { login, googleLogin } = useAuth();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [attemptCount, setAttemptCount] = useState(0);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isBlocked) {
+      setErrorMessage("Too many failed attempts. Please wait 30 seconds.");
+      return;
+    }
+
     setLoading(true);
+    setErrorMessage("");
+
     try {
       await login(form.email, form.password);
       toast.success("Welcome back to the ecosystem!");
+      setAttemptCount(0);
       router.push("/profile");
     } catch (err: any) {
-      toast.error(err.message || "Invalid credentials");
+      const newCount = attemptCount + 1;
+      setAttemptCount(newCount);
+
+      if (newCount >= 5) {
+        setIsBlocked(true);
+        setErrorMessage("Too many failed attempts. Please wait 30 seconds.");
+        setTimeout(() => {
+          setIsBlocked(false);
+          setAttemptCount(0);
+          setErrorMessage("");
+        }, 30000);
+      } else {
+        setErrorMessage("Invalid email or password");
+      }
     } finally {
       setLoading(false);
     }
@@ -126,10 +151,14 @@ export default function LoginPage() {
               </button>
             </div>
           </div>
-
+          {errorMessage && (
+            <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-2xl">
+              {errorMessage}
+            </div>
+          )}
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || isBlocked}
             className="w-full bg-eco-dark text-white py-5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2 group"
           >
             {loading ? (
