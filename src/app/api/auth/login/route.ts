@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   const now = Date.now()
   const record = attempts.get(ip)
 
-  if (record && record.count >= 5 && now - record.time < 30000) {
+  if (record && record.count >= 50 && now - record.time < 200000) {
     return NextResponse.json(
       { error: "Too many attempts" },
       { status: 429 }
